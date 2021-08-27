@@ -1,21 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  chosenIngredients: [],
+  chosen: [],
+  goods: [],
 };
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    addGoods: (state, action) => {
+      state.goods = [...state.goods.concat(action.payload)];
+    },
     addIngredient: (state, action) => {
-      state.chosenIngredients = [...state.chosenIngredients.concat(action.payload)];
+      state.chosen = [...state.chosen.concat(action.payload)];
     },
     removeIngredient: (state, action) => {
-      state.chosenIngredients = [
-        ...state.chosenIngredients.slice(0, action.payload.positionIndex),
-        ...state.chosenIngredients.slice(action.payload.positionIndex + 1),
-      ];
+      state.chosen = [...state.chosen.reduce((acc, i) => {
+        if (i.id === action.payload.id) return acc;
+        return [...acc, i];
+      }, []) ]
     },
   },
 });
@@ -23,6 +27,7 @@ export const cartSlice = createSlice({
 export const {
   addIngredient,
   removeIngredient,
+  addGoods
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
