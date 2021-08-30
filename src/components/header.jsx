@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
   display: block;
   padding: 4px 8px;
   background-color: ${(p) => p.theme.colors.background};
+  z-index: 10;
 `
 const LogoWrapper = styled.div`
   box-sizing: border-box;

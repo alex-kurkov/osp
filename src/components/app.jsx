@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { finishRequest, startRequest } from '../services/reducers/api/apiSlice';
 import { addGoods } from '../services/reducers/cart/cartSlice';
 import Main from './main';
+import Loader from './loader'
 
 const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
@@ -33,7 +34,7 @@ const App = () => {
       <StyledApp>
         <Header />
         <Main />
-        { apiRequestInProgress && <span>Loading.........</span> }
+        { apiRequestInProgress && <Loader /> }
       </StyledApp>
     </ThemeProvider>
   )

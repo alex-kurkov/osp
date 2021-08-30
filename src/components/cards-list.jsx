@@ -14,6 +14,7 @@ const List = styled.ul`
   `
 const ListItem = styled.li`
   list-style-type: none;
+  padding: 8px;
 `
 
 const CardsList = () => {

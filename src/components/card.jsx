@@ -2,53 +2,54 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import LikeIcon from '../ui/icons/like-icon'
 import { addIngredient, removeIngredient } from '../services/reducers/cart/cartSlice'
 
 const StyledCard = styled.article`
   box-sizing: border-box;
   width: 100%;
   padding: 0;
-  background-color: ${p => p.theme.colors.activeElementBg};
+  height: auto;
+  padding-bottom: 100%;
+  position: relative;
+  box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 8px 1px;
+  background-image: url(${p => p.img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   display: flex;
   flex-direction: column;
   gap: 4px;
 `
+const Block = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, transparent, ${(p) => p.theme.colors.background});
+  padding: 4px;
+`
 const Title = styled.h3`
   font-size: 24px;
   font-weight: 700;
-  align-self: center;
+  text-align: left;
   text-overflow: hidden;
   color: ${p => p.theme.colors.textPrimary};
-`
-const Image = styled.img`
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+  margin: 0 0 4px 0;
 `
 const InfoBlock = styled.div`
   box-sizing: border-box;
   display: flex;
-  width: 100%;
-  padding: 4px;
+  width: calc(100% - 8px);
   gap: 8px;
   justify-content: space-between;
   align-items: center;
 `
 const Price = styled.span`
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: ${p => p.theme.colors.textPrimary};
-`
-const ChooseBtn = styled.div`
-  &:hover {
-    cursor: pointer;
-  }
-  color: ${p => p.theme.colors.textPrimary};
-  font-size: 20px;
-  font-weight: 500;
-  border-bottom: ${p => 
-    p.added ? '2px solid red' : ' none'
-  };
 `
 
 const Card = ({ item }) => {
@@ -74,14 +75,14 @@ const Card = ({ item }) => {
   }
 
   return (
-    <StyledCard>
-      <Title>{name}</Title>
-      <Image src={image} />
-      <InfoBlock>
-        <Price>{price}</Price>
-        <ChooseBtn added={added} onClick={handleAdd}>ОТЛОЖИТЬ</ChooseBtn>
-      </InfoBlock>
-
+    <StyledCard img={image}>
+      <Block>
+        <Title>{name}</Title>
+        <InfoBlock>
+          <Price>{price} P.-</Price>
+          <LikeIcon liked={added} onClick={handleAdd} />
+        </InfoBlock>
+      </Block>
     </StyledCard>
   )
 }
