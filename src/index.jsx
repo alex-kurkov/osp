@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './components/app';
 import './index.css';
+import 'swiper/swiper-bundle.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

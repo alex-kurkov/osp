@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   left: 0;
   box-sizing: border-box;
   width: 100%;
-  height: 144px;
+  height: 160px;
   display: block;
   padding: 4px 8px;
   background-color: ${(p) => p.theme.colors.background};
