@@ -1,12 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import styled from 'styled-components'
 import CardsList from './cards-list'
 import { useState } from 'react'
 import ChevronIcon from '../ui/icons/chevron-icon'
 import ArrowIcon from '../ui/icons/arrow-icon'
-import { dishes } from '../utils/hardcode'
 import Menu from './menu'
 
 const StyledMain = styled.main`
@@ -32,13 +30,13 @@ const StyledMenuItem = styled.div`
   align-items: center;
 `;
 
-
-const Main = () =>{
-  const { goods } = useSelector(store => store.cart);
+const Main = ({ goods }) => {
   const [ swiper, setSwiper ] = useState(null);
-  const [ menuToggled, setMenuToggled ] = useState(false);
+  const [ menuToggled, setMenuToggled ] = useState(true);
   const [ currentItemType, setCurrentItemType ] = useState(0);
-  const menuItems = dishes.map((item) => item.type)
+  
+  const dishes = [...goods].sort((a, b) => a['order'] - b['order']);
+  const menuItems = dishes.map((item) => item.name);
 
   const next = () => {
     swiper?.slideNext()
@@ -49,19 +47,20 @@ const Main = () =>{
   const handleClick = (idx) => {
     setCurrentItemType(idx);
     swiper.slideTo(idx, 200);
+    setMenuToggled(!menuToggled);
   }
 
   return (
-    <StyledMain>
+      <StyledMain>
       <StyledNavigation>
         <ChevronIcon direction="left" onClick={prev}/>
         <StyledMenuItem>
-          { dishes[currentItemType]['type'].toUpperCase() }
+          { dishes[currentItemType]['name'].toUpperCase() }
           <ArrowIcon direction={menuToggled ? "up" : "down"} onClick={() => setMenuToggled(!menuToggled)} />
         </StyledMenuItem>
         <ChevronIcon direction="right" onClick={next} />
       </StyledNavigation>
-      <Menu 
+      <Menu
         toggled={menuToggled} 
         items={menuItems}
         activeItem={currentItemType} 
@@ -78,18 +77,16 @@ const Main = () =>{
           setCurrentItemType(swiper.activeIndex)
         }}
       >
-        <SwiperSlide>
-          <CardsList goods={goods} />
-        </SwiperSlide>
-        <SwiperSlide>
-          {(i) => 
-            <CardsList goods={goods} />
-          }
+        {
+          dishes.map((i) => {
+            return (
+              <SwiperSlide key={i.slug}>
+                <CardsList goods={i.items} />
+              </SwiperSlide>
+            )
+          })
 
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardsList goods={goods} />
-        </SwiperSlide>
+        }
       </Swiper>
 
     </StyledMain>

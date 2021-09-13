@@ -9,6 +9,7 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
   `
 const ListItem = styled.li`
   list-style-type: none;
@@ -21,7 +22,7 @@ const CardsList = ({goods}) => {
       { goods && !!goods.length &&
         goods.map(item => {
           return (
-            <ListItem key={item.id}>
+            <ListItem key={item.slug}>
               <Card item={item} />
             </ListItem>
           )
@@ -32,4 +33,4 @@ const CardsList = ({goods}) => {
   )
 }
 
-export default CardsList
+export default CardsList;

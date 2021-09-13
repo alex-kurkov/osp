@@ -2,13 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import { LightTheme, DarkTheme } from '../ui/theme';
-import Header from './header';
-import { cards } from '../utils/hardcode';
 import { useEffect } from 'react';
-import { finishRequest, startRequest } from '../services/reducers/api/apiSlice';
-import { addGoods } from '../services/reducers/cart/cartSlice';
+import { getGoods } from '../services/actions/api';
+import Header from './header';
 import Main from './main';
-import Loader from './loader'
+import Loader from './loader';
 
 const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
@@ -16,24 +14,19 @@ const StyledApp = styled.div`
 
 const App = () => {
   const dispatch = useDispatch();
-  const { theme } = useSelector((state) => state)
+  const { theme } = useSelector((state) => state);
+  const { goods } = useSelector(store => store.cart);
   const { apiRequestInProgress } = useSelector((state) => state.api)
 
   useEffect(() => {
-    //api mock
-    dispatch(startRequest());
-    setTimeout(() => {
-      dispatch(addGoods(cards))
-      dispatch(finishRequest())
-    }, 5000)
+    dispatch(getGoods())
   }, [dispatch])
-
 
   return (
     <ThemeProvider theme={theme.active === 'light' ? LightTheme : DarkTheme}>
       <StyledApp>
         <Header />
-        <Main />
+        { !!goods.length && <Main goods={goods}/>}
         { apiRequestInProgress && <Loader /> }
       </StyledApp>
     </ThemeProvider>
