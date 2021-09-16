@@ -1,4 +1,4 @@
-import { API_URL } from '../services/constants';
+export const API_URL='https://api.eda89.ru';
 
 const getGoodsRequest = () => fetch(
   `${API_URL}/goods`,

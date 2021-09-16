@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledWrap = styled.div`
+  margin-left: 8px;
   transform: ${(props) =>
     props.direction === 'up'
       ? 'rotate(180deg)'

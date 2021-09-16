@@ -1,7 +1,7 @@
 import { TOGGLE_THEME } from '../constants'
 
 const initialState = {
-  active: 'light',
+  active: 'dark',
 }
 
 // eslint-disable-next-line

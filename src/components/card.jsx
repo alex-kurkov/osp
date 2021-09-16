@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import LikeIcon from '../ui/icons/like-icon';
 import { addIngredient, removeIngredient } from '../services/reducers/cart/cartSlice'
-import { API_URL } from '../services/constants';
+import { API_URL } from '../utils/requests';
 
 const StyledCard = styled.article`
   box-sizing: border-box;

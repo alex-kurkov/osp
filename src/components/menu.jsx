@@ -16,9 +16,8 @@ const StyledMenu = styled.nav`
 const StyledLi = styled.li`
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 4px;
   font-weight: ${p => p.active ? '600' : '400'};
-  transform: translateX(${p => p.active ? '10px' : '0'});
   color: ${p => p.theme.colors.textPrimary};
 `
 
@@ -29,7 +28,7 @@ const Menu = ({ items, activeItem, onClick, toggled }) => {
           {
             !!items?.length && items.map(
               (item, idx) => (
-                <StyledLi key={item.slug} onClick={() => onClick(idx)} active={activeItem === idx}>
+                <StyledLi key={`${item}${item.idx}`} onClick={() => onClick(idx)} active={activeItem === idx}>
                   {item.toUpperCase()}
                 </StyledLi>
               )
@@ -40,4 +39,4 @@ const Menu = ({ items, activeItem, onClick, toggled }) => {
   )
 }
 
-export default Menu
+export default Menu;
