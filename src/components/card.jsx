@@ -27,26 +27,25 @@ const Block = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 30%;
   background: linear-gradient(to bottom, transparent, ${(p) => p.theme.colors.background});
   padding: 4px;
+  justify-content: end;
 `
 const Title = styled.h3`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  line-heighth: 1.2;
   color: #ebebeb;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
   min-height: 26px;
-`
+  `
 const StyledDescription = styled.p`
   color: ${p => p.theme.colors.textPrimary};
   font-size: 14px;
@@ -56,9 +55,10 @@ const StyledDescription = styled.p`
   margin: 0;
   height: 100%;
   border-bottom: 1px solid ${p => p.theme.colors.textPrimary};
-`
+  `
 const InfoBlock = styled.div`
-  height: 24px;
+  border-top: 1px solid ${p => p.theme.colors.textPrimary};
+  height: 32px;
   box-sizing: border-box;
   display: flex;
   width: 100%;
@@ -98,10 +98,10 @@ const Card = ({ item }) => {
     <StyledCard img={image.url}>
       <Block>
         <Title>{name}</Title>
-        <StyledDescription> {description} </StyledDescription>
+{/*         <StyledDescription> {description} </StyledDescription> */}
         <InfoBlock>
           <Price>{price} P.-</Price>
-          <LikeIcon liked={added} onClick={handleAdd} />          
+          <LikeIcon width="32px" height="32px" liked={added} onClick={handleAdd} />          
         </InfoBlock>
       </Block>
     </StyledCard>
