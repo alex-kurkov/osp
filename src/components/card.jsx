@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import LikeIcon from '../ui/icons/like-icon';
+import InfoIcon from '../ui/icons/info-icon';
 import { addIngredient, removeIngredient } from '../services/reducers/cart/cartSlice'
 import { API_URL } from '../utils/requests';
 
@@ -22,6 +23,13 @@ const StyledCard = styled.article`
   flex-direction: column;
   gap: 4px;
 `
+
+const Info = styled.div`
+  width: 100%;
+  max-height: ${p => p.infoVisible ? '200px' : '0'};
+  overflow: hidden;
+  transition: max-height .3s ease-in-out;
+`
 const Block = styled.div`
   box-sizing: border-box;
   position: absolute;
@@ -31,17 +39,16 @@ const Block = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 30%;
-  background: linear-gradient(to bottom, transparent, ${(p) => p.theme.colors.background});
-  padding: 4px;
+  height: fit-content;
+  background: linear-gradient(to bottom, transparent 0%, ${(p) => p.theme.colors.background} 50%);
+  padding: 24px 4px 4px 4px;
   justify-content: end;
 `
 const Title = styled.h3`
   font-size: 20px;
   font-weight: 700;
   text-align: left;
-  line-heighth: 1.2;
-  color: #ebebeb;
+  line-height: 1.2;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
   min-height: 26px;
@@ -53,9 +60,28 @@ const StyledDescription = styled.p`
   text-align: left;
   overflow: hidden;
   margin: 0;
-  height: 100%;
-  border-bottom: 1px solid ${p => p.theme.colors.textPrimary};
   `
+const NutritionBlock = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+`
+const NutritionTitle = styled.h4`
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.2;
+  margin: 0;
+  color: ${p => p.theme.colors.textPrimary};
+`
+const NutritionValue = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.2;
+  margin: 0;
+  color: ${p => p.theme.colors.textPrimary};
+`
 const InfoBlock = styled.div`
   border-top: 1px solid ${p => p.theme.colors.textPrimary};
   height: 32px;
@@ -71,15 +97,23 @@ const Price = styled.span`
   font-weight: 600;
   color: ${p => p.theme.colors.textPrimary};
 `
+const InfoWrap = styled.div`
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  `
 
 const Card = ({ item }) => {
   const dispatch = useDispatch()
-  const {
-    name, price, image, slug, description
-  } = item;
   const { chosen } = useSelector(store => store.cart);
+  const {
+    name, price, image, slug, description, nutrition
+  } = item;
 
-  const [added, setAdded] = useState(false)
+  const [added, setAdded] = useState(false);
+  const [infoVisible, setInfoVisible] = useState(false);
 
   useEffect(() => {
     const itemFound = chosen.find(i => i.slug === slug)
@@ -98,12 +132,29 @@ const Card = ({ item }) => {
     <StyledCard img={image.url}>
       <Block>
         <Title>{name}</Title>
-{/*         <StyledDescription> {description} </StyledDescription> */}
+
+        <Info infoVisible={infoVisible}>
+            <StyledDescription> {description} </StyledDescription>
+            <NutritionBlock>
+              <NutritionTitle>Вес</NutritionTitle>
+              <NutritionTitle>Б/Ж/У</NutritionTitle>
+              <NutritionTitle>Калорийность</NutritionTitle>
+              <NutritionValue>{nutrition?.weight || 'н/д'}</NutritionValue>
+              <NutritionValue>
+                {nutrition?.protein || 'н/д'}/{nutrition?.fat || 'н/д'}/{nutrition?.carbohydrates || 'н/д'}
+              </NutritionValue>
+              <NutritionValue>{nutrition?.calories || 'н/д'}</NutritionValue>
+            </NutritionBlock>
+        </Info>
+        
         <InfoBlock>
           <Price>{price} P.-</Price>
           <LikeIcon width="32px" height="32px" liked={added} onClick={handleAdd} />          
         </InfoBlock>
       </Block>
+      <InfoWrap>
+        <InfoIcon width="32px" height="32px" onClick={() => setInfoVisible(!infoVisible)} />
+      </InfoWrap>
     </StyledCard>
   )
 }
