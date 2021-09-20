@@ -12,18 +12,18 @@ const StyledMenu = styled.nav`
     top: 0;
     left: 0;
     content: '';
-    width: 20px;
+    width: 40px;
     height: 100%;
-    background: linear-gradient(to right, ${p => p.theme.colors.background}, transparent)
+    background: linear-gradient(90deg, ${p => p.theme.colors.background}, rgba(0,0,0,0.0001))
   }
   &::after {
     position: absolute;
     top: 0;
     right: 0;
     content: '';
-    width: 20px;
+    width: 40px;
     height: 100%;
-    background: linear-gradient(to left, ${p => p.theme.colors.background}, transparent)
+    background: linear-gradient(270deg, ${p => p.theme.colors.background}, rgba(0,0,0,0.0001))
   }
 `
 const StyledUl = styled.ul`
@@ -52,7 +52,7 @@ const Menu = ({ items, activeItem, onClick }) => {
   
   useEffect(() => {
     const el = document.getElementById(`nav-${activeItem}`);
-    el.scrollIntoView({ inline: "center" });
+    el.scrollIntoView({ inline: "center", block: 'center' });
   }, [activeItem])
 
   return (
