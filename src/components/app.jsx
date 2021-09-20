@@ -10,6 +10,8 @@ import Loader from './loader';
 
 const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
+  width: 100vw;
+  height: 100vh;
 `;
 
 const App = () => {

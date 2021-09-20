@@ -59,7 +59,8 @@ const StyledDescription = styled.p`
   font-weight: 400;
   text-align: left;
   overflow: hidden;
-  margin: 0;
+  margin: 0 0 8px 0;
+  white-space: pre-line;
   `
 const NutritionBlock = styled.div`
   display: grid;
@@ -132,16 +133,15 @@ const Card = ({ item }) => {
     <StyledCard img={image.url}>
       <Block>
         <Title>{name}</Title>
-
         <Info infoVisible={infoVisible}>
             <StyledDescription> {description} </StyledDescription>
             <NutritionBlock>
               <NutritionTitle>Вес</NutritionTitle>
-              <NutritionTitle>Б/Ж/У</NutritionTitle>
+              <NutritionTitle>Б / Ж / У</NutritionTitle>
               <NutritionTitle>Калорийность</NutritionTitle>
-              <NutritionValue>{nutrition?.weight || 'н/д'}</NutritionValue>
+              <NutritionValue>{nutrition?.weight || '-'}</NutritionValue>
               <NutritionValue>
-                {nutrition?.protein || 'н/д'}/{nutrition?.fat || 'н/д'}/{nutrition?.carbohydrates || 'н/д'}
+                {nutrition?.protein || '-'} / {nutrition?.fat || '-'} / {nutrition?.carbohydrates || '-'}
               </NutritionValue>
               <NutritionValue>{nutrition?.calories || 'н/д'}</NutritionValue>
             </NutritionBlock>

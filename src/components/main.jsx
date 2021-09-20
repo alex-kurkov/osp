@@ -67,6 +67,7 @@ const Main = ({ goods }) => {
         onClick={handleClick}  
       />
       <Swiper
+        autoHeight={true}
         spaceBetween={0}
         slidesPerView={1}
         onSlideChange={(i) => {

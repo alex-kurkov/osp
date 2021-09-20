@@ -30,7 +30,7 @@ const LogoWrapper = styled.div`
 const BtnWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 40px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;

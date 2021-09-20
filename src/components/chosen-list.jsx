@@ -17,7 +17,7 @@ const ListItem = styled.li`
   padding: 8px;
 `
 
-const CardsList = ({goods}) => {
+const ChosenList = ({goods}) => {
   return (
     <List>
       { goods && !!goods.length &&
@@ -34,4 +34,4 @@ const CardsList = ({goods}) => {
   )
 }
 
-export default CardsList;
+export default ChosenList;

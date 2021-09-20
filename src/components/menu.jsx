@@ -8,7 +8,7 @@ const StyledMenu = styled.nav`
   top: 154px;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: auto;
   transition: transform 0.15s ease-out;
   overflow: hidden;
   z-index: 5;
