@@ -14,7 +14,8 @@ const StyledMenu = styled.nav`
     content: '';
     width: 40px;
     height: 100%;
-    background: linear-gradient(90deg, ${p => p.theme.colors.background}, rgba(0,0,0,0.0001))
+    background: linear-gradient(90deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent});
+    background: webkit-linear-gradient(90deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent});
   }
   &::after {
     position: absolute;
@@ -23,7 +24,8 @@ const StyledMenu = styled.nav`
     content: '';
     width: 40px;
     height: 100%;
-    background: linear-gradient(270deg, ${p => p.theme.colors.background}, rgba(0,0,0,0.0001))
+    background: linear-gradient(270deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent});
+    background: webkit-linear-gradient(270deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent})
   }
 `
 const StyledUl = styled.ul`

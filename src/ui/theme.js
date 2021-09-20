@@ -13,16 +13,18 @@ export const GlobalStyle = createGlobalStyle`
 `
 export const LightTheme = {
   colors: {
-    background: '#ebebeb',
+    background: 'rgba(235, 235, 235, 1)',
     textPrimary: '#1c1c22',
     activeElementBg: '#f4f4f4',
+    transparent: 'rgba(255,255,255,0)',
   },
 }
 export const DarkTheme = {
   colors: {
-    background: '#1c1c22',
+    background: 'rgba(28, 28, 34, 1)',
     textPrimary: '#ebebeb',
     activeElementBg: '#2a2a2a',
+    transparent: 'rgba(0, 0, 0, 0)',
   },
 }
 
