@@ -5,7 +5,7 @@ const Svg = styled.svg`
   width: ${(props) => props.width || '24px'};
   height: ${(props) => props.height || '24px'};
   fill: ${(p) => p.theme.colors.textPrimary};
-  transition: all 0.2s ease-in-out;
+  justify-self: end;
   &:hover {
     cursor: pointer;
   }

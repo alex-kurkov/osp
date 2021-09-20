@@ -21,17 +21,18 @@ const StyledModal = styled.div`
   max-width: 720px;
   width: calc(100% - 16px);
   height: fit-content;
+  min-height: 120px;
   max-height: 70%;
   overflow: scroll;
   z-index: 15;
-  background-color: #1C1C21;
+  background-color:${p => p.theme.colors.background};
   border-radius: 20px;
   position: relative;
+  padding: 8px;
 `
 const IconWrap = styled.div`
-  padding: 8px;
-  width: auto;
-  height: 32px;
+  width: 100%;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr 32px;
   gap: 4px;

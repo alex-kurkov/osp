@@ -1,6 +1,6 @@
 export const API_URL='https://api.eda89.ru';
 
-const getGoodsRequest = () => fetch(
+const getGoodsRequest = async () => await fetch(
   `${API_URL}/goods`,
 )
 .then((res) => res.json())

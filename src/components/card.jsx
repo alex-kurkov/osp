@@ -36,13 +36,13 @@ const Block = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   bottom: 0;
   left: 0;
   width: 100%;
   height: fit-content;
   background: linear-gradient(to bottom, transparent 0%, ${(p) => p.theme.colors.background} 50%);
-  padding: 24px 4px 4px 4px;
+  padding: 40px 4px 2px 4px;
   justify-content: end;
 `
 const Title = styled.h3`
