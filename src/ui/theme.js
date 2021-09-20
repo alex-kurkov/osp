@@ -16,7 +16,6 @@ export const LightTheme = {
     background: '#ebebeb',
     textPrimary: '#1c1c22',
     activeElementBg: '#f4f4f4',
-
   },
 }
 export const DarkTheme = {
@@ -24,7 +23,6 @@ export const DarkTheme = {
     background: '#1c1c22',
     textPrimary: '#ebebeb',
     activeElementBg: '#2a2a2a',
-
   },
 }
 

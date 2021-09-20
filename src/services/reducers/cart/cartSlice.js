@@ -10,7 +10,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addGoods: (state, action) => {
-      state.goods = [...state.goods.concat(action.payload)];
+      const dishes = [...action.payload].sort((a, b) => a['order'] - b['order']);
+      state.goods = dishes;
     },
     addIngredient: (state, action) => {
       state.chosen = [...state.chosen.concat(action.payload)];

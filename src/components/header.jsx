@@ -6,12 +6,9 @@ import ThemeToggler from './theme-toggler';
 import Logo from './logo'
 
 const StyledHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
   box-sizing: border-box;
   width: 100%;
-  height: 160px;
+  height: 100px;
   display: block;
   padding: 4px 8px;
   background-color: ${(p) => p.theme.colors.background};
@@ -20,7 +17,7 @@ const StyledHeader = styled.header`
 const LogoWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 80px;
+  height: 60px;
   display: flex;
   gap: 8px;
   justify-content: space-between;

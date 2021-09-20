@@ -23,6 +23,7 @@ const StyledCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  border-radius: 8px;
 `
 
 const Info = styled.div`
@@ -44,6 +45,7 @@ const Block = styled.div`
   background: linear-gradient(to bottom, transparent 0%, ${(p) => p.theme.colors.background} 50%);
   padding: 40px 4px 2px 4px;
   justify-content: end;
+  border-radius: 0 0 4px 4px;
 `
 const Title = styled.h3`
   font-size: 20px;

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import CloseIcon from '../ui/icons/close-icon'
 
 const Overlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
@@ -20,15 +20,15 @@ const Overlay = styled.div`
 const StyledModal = styled.div`
   max-width: 720px;
   width: calc(100% - 16px);
+  margin: 0 auto;
   height: fit-content;
   min-height: 120px;
   max-height: 70%;
-  overflow: scroll;
   z-index: 15;
   background-color:${p => p.theme.colors.background};
   border-radius: 20px;
   position: relative;
-  padding: 8px;
+  padding: 16px 8px;
 `
 const IconWrap = styled.div`
   width: 100%;
@@ -47,7 +47,8 @@ const Title = styled.h4`
 `
 const Content = styled.section`
   max-height: calc(100% - 40px);
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 100%;
 `
 
