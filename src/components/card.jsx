@@ -6,6 +6,7 @@ import LikeIcon from '../ui/icons/like-icon';
 import InfoIcon from '../ui/icons/info-icon';
 import { addIngredient, removeIngredient } from '../services/reducers/cart/cartSlice'
 import { API_URL } from '../utils/requests';
+import template from '../images/template-image.png'
 
 const StyledCard = styled.article`
   box-sizing: border-box;
@@ -15,7 +16,7 @@ const StyledCard = styled.article`
   padding-bottom: 100%;
   position: relative;
   box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 8px 1px;
-  background-image: url(${p => `${API_URL}${p.img}`});
+  background-image: url(${p => !!p.img ? `${API_URL}${p.img}` : template});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -130,7 +131,7 @@ const Card = ({ item }) => {
   }
 
   return (
-    <StyledCard img={image.url}>
+    <StyledCard img={image?.url}>
       <Block>
         <Title>{name}</Title>
         <Info infoVisible={infoVisible}>
