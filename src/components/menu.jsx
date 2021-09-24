@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 const StyledMenu = styled.nav`
   width: 100%;
-  max-height: 40px;
-  padding: 0;
+  max-height: 48px;
+  padding: 4px;
   overflow: hidden;
   position: relative;
 /*   &::before {
@@ -32,11 +32,8 @@ const StyledUl = styled.ul`
   padding: 0;
   display: flex;
   gap: 12px;
-  flex-flow: wrap;
-  justify-content: flex-start;
   justify-content: flex-start;
   overflow-x: scroll;
-  width: auto;
   flex-wrap: nowrap;
 `
 
@@ -44,10 +41,24 @@ const StyledLi = styled.li`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  border-bottom: ${p => p.active ? '1px' : '0'} ${p => p.theme.colors.textPrimary} solid;
   font-weight: ${p => p.active ? '500' : '400'};
   color: ${p => p.theme.colors.textPrimary};
   white-space: nowrap;
+  position: relative;
+
+  &::after {
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -6px;
+    width: 1px;
+    background-color: ${p => p.theme.colors.textPrimary};
+  }
+  &:last-of-type::after {
+    display: none;
+  }
+
 `
 
 const Menu = ({ items, activeItem, onClick }) => {

@@ -24,12 +24,12 @@ const StyledModal = styled.div`
   margin: 0 auto;
   height: fit-content;
   min-height: 120px;
-  max-height: 70%;
+  max-height: 90%;
   z-index: 15;
   background-color:${p => p.theme.colors.background};
   border-radius: 20px;
   position: relative;
-  padding: 16px 8px;
+  padding: 8px;
 `
 const IconWrap = styled.div`
   width: 100%;
@@ -37,7 +37,7 @@ const IconWrap = styled.div`
   display: grid;
   grid-template-columns: 1fr 32px;
   gap: 4px;
-  margin-bottom: 8px;
+  margin: 0;
 `
 const Title = styled.h4`
   margin: 0;
@@ -47,9 +47,8 @@ const Title = styled.h4`
   color: ${p => p.theme.colors.textPrimary};
 `
 const Content = styled.section`
-  max-height: calc(100% - 40px);
-  overflow-y: scroll;
-  overflow-x: hidden;
+  max-height: 100%;
+  overflow: hidden;
   width: 100%;
 `
 

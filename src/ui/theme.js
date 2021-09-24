@@ -17,6 +17,8 @@ export const LightTheme = {
     textPrimary: '#1c1c22',
     activeElementBg: '#f4f4f4',
     transparent: 'rgba(255,255,255,0)',
+    added: '#00b900',
+    unadded: '#d00000'
   },
 }
 export const DarkTheme = {
@@ -25,6 +27,8 @@ export const DarkTheme = {
     textPrimary: '#ebebeb',
     activeElementBg: '#2a2a2a',
     transparent: 'rgba(0, 0, 0, 0)',
+    added: '#00b900',
+    unadded: '#d00000'
   },
 }
 

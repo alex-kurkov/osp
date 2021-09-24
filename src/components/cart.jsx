@@ -1,8 +1,7 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Modal from './modal';
-import { openModal, closeModal } from '../services/reducers/control/controlSlice';
 import ChosenList from './chosen-list'
 import CartIcon from '../ui/icons/cart-icon';
 
@@ -31,12 +30,10 @@ const CountTag = styled.div`
 
 const Cart = () => {
   const { chosen } = useSelector(store => store.cart);
-  const { modalVisible } = useSelector((state) => state.control);
-  const dispatch = useDispatch();
-  const closeModalCb = () => dispatch(closeModal());
+  const [ modalVisible, setModalVisible ] = useState(false);
 
   return (
-    <StyledCart onClick={() => dispatch(openModal())}>
+    <StyledCart onClick={() => setModalVisible(true)}>
       <CartIcon width="30px" height="30px"/>
       {
         !!chosen.length && 
@@ -44,11 +41,11 @@ const Cart = () => {
           {chosen.length}
         </CountTag>
       }
-    { !!modalVisible && 
-      <Modal onClose={closeModalCb} title="Мой выбор">
-        <ChosenList goods={chosen} />
-      </Modal>
-    }
+      { modalVisible && 
+        <Modal onClose={() => setModalVisible(false)} title="Мой выбор">
+          <ChosenList goods={chosen} />
+        </Modal>
+      }
     </StyledCart>
   )
 }

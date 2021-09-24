@@ -33,7 +33,6 @@ const Header = () => {
         <ThemeToggler />
         <Cart width="30px" height="30px" />
         <BurgerIcon width="30px" height="30px" />
-
       </Wrap>
     </StyledHeader>
   )
