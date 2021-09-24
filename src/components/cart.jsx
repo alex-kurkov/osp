@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Modal from './modal';
 import ChosenList from './chosen-list'
 import CartIcon from '../ui/icons/cart-icon';
+import { useModalDisclosure } from '../utils/hooks';
 
 const StyledCart = styled.article`
   width: 30px;
@@ -30,10 +31,10 @@ const CountTag = styled.div`
 
 const Cart = () => {
   const { chosen } = useSelector(store => store.cart);
-  const [ modalVisible, setModalVisible ] = useState(false);
+  const { isOpenModal, openModal, closeModal, toggleModal } = useModalDisclosure(false, {});
 
   return (
-    <StyledCart onClick={() => setModalVisible(true)}>
+    <StyledCart onClick={openModal}>
       <CartIcon width="30px" height="30px"/>
       {
         !!chosen.length && 
@@ -41,8 +42,8 @@ const Cart = () => {
           {chosen.length}
         </CountTag>
       }
-      { modalVisible && 
-        <Modal onClose={() => setModalVisible(false)} title="Мой выбор">
+      { isOpenModal && 
+        <Modal onClose={closeModal} title="Мой выбор">
           <ChosenList goods={chosen} />
         </Modal>
       }

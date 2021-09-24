@@ -7,6 +7,7 @@ import { addIngredient, removeIngredient } from '../services/reducers/cart/cartS
 import { API_URL } from '../utils/requests';
 import template from '../images/template-image.png'
 import CardDetails from './card-details';
+import { useModalDisclosure } from '../utils/hooks';
 
 const StyledCard = styled.article`
   box-sizing: border-box;
@@ -75,22 +76,19 @@ const Price = styled.span`
 `
 
 const Card = ({ item }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { chosen } = useSelector(store => store.cart);
   const {
     name, price, image, slug,
   } = item;
 
   const [added, setAdded] = useState(chosen.find(i => i.slug === slug));
-  const [infoVisible, setInfoVisible] = useState(false);
-  const closeModalCb = () => {
-    setInfoVisible(false);
-  };
+  const { isOpenModal, openModal, closeModal, toggleModal } = useModalDisclosure(false, {});
 
   useEffect(() => {
     const itemFound = chosen.find(i => i.slug === slug)
     setAdded(itemFound);
-  }, [chosen, slug, infoVisible])
+  }, [chosen, slug, isOpenModal])
 
   const handleAdd = () => {
     if (added) {
@@ -102,17 +100,17 @@ const Card = ({ item }) => {
 
   return (
     <StyledCard>
-      <ImageBlock onClick={() => setInfoVisible(!infoVisible)}>
+      <ImageBlock onClick={toggleModal}>
         <Image loading="lazy" src={image?.url ? `${API_URL}${image.url}` : template} alt={`изображение блюда ${name} в меню ресторана Остров Суши`}/>
       </ImageBlock>
       {
-        !!infoVisible && 
+        !!isOpenModal && 
           <>
             <CardDetails 
             item={item} 
             handleAdd={handleAdd} 
             added={added}
-            closeModalCb={closeModalCb}/>
+            closeModalCb={closeModal}/>
           </>
       }
       <Block>
