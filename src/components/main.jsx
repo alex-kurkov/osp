@@ -20,12 +20,12 @@ const Main = () => {
   
   const menuItems = goods.map((item) => item.name);
 
-  const next = () => {
+/*   const next = () => {
     swiper?.slideNext()
   }
   const prev = () => {
     swiper?.slidePrev()
-  }
+  } */
   const handleClick = (idx) => {
     setCurrentItemType(idx);
     swiper.slideTo(idx, 200);

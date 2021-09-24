@@ -35,16 +35,32 @@ const StyledUl = styled.ul`
   justify-content: flex-start;
   overflow-x: scroll;
   flex-wrap: nowrap;
+  height: 100%;
+  &::-webkit-scrollbar {
+    width: 0;
+}
 `
 
 const StyledLi = styled.li`
   list-style-type: none;
   margin: 0;
   padding: 0;
-  font-weight: ${p => p.active ? '500' : '400'};
+  font-weight: ${p => p.active ? '600' : '400'};
   color: ${p => p.theme.colors.textPrimary};
   white-space: nowrap;
   position: relative;
+
+  &::before{
+    transition: width .3s ease-in-out;
+    content: '';
+    width: ${p => p.active ? '100%' : '0'};
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: 
+      linear-gradient(90deg, ${p => p.theme.colors.transparent}, ${p => p.theme.colors.textPrimary});
+  }
 
   &::after {
     content: '';
@@ -58,7 +74,6 @@ const StyledLi = styled.li`
   &:last-of-type::after {
     display: none;
   }
-
 `
 
 const Menu = ({ items, activeItem, onClick }) => {

@@ -6,8 +6,6 @@ import LikeIcon from '../ui/icons/like-icon';
 import { addIngredient, removeIngredient } from '../services/reducers/cart/cartSlice'
 import { API_URL } from '../utils/requests';
 import template from '../images/template-image.png'
-import Modal from './modal';
-import { closeModal } from '../services/reducers/control/controlSlice';
 import CardDetails from './card-details';
 
 const StyledCard = styled.article`
