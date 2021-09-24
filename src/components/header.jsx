@@ -1,50 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
-import DeliveryButton from './delivery-button';
 import Cart from './cart';
 import ThemeToggler from './theme-toggler';
 import Logo from './logo'
+import BurgerIcon from '../ui/icons/burger-icon';
 
 const StyledHeader = styled.header`
   box-sizing: border-box;
   width: 100%;
   height: 100px;
-  display: block;
-  padding: 4px 8px;
+  padding: 4px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
   background-color: ${(p) => p.theme.colors.background};
-  z-index: 10;
-`
-const LogoWrapper = styled.div`
-  box-sizing: border-box;
-  width: 100%;
   height: 60px;
+  z-index: 10;
+  `
+const Wrap = styled.div`
   display: flex;
-  gap: 8px;
-  justify-content: space-between;
+  gap: 16px;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 4px;
-`
-const BtnWrapper = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
 `
 
 const Header = () => {
   return (
     <StyledHeader>
-      <LogoWrapper>
-        <Logo width="160px" height="80px" />
+      <Logo width="120px" height="60px" />
+      <Wrap>
         <ThemeToggler />
-      </LogoWrapper>
-      <BtnWrapper>
-        <Cart />
-        <DeliveryButton />
-      </BtnWrapper>
+        <Cart width="30px" height="30px" />
+        <BurgerIcon width="30px" height="30px" />
+
+      </Wrap>
     </StyledHeader>
   )
 };

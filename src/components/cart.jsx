@@ -4,23 +4,18 @@ import styled from 'styled-components'
 import Modal from './modal';
 import { openModal, closeModal } from '../services/reducers/control/controlSlice';
 import ChosenList from './chosen-list'
+import CartIcon from '../ui/icons/cart-icon';
 
 const StyledCart = styled.article`
-  width: 50%;
-  max-width: 50%;
+  width: 30px;
   height: 30px;
   box-sizing: border-box;
   position: relative;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  background-color: ${(p) => p.theme.colors.activeElementBg};
-  color: ${(p) => p.theme.colors.textPrimary};
-  box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 5px -1px;
 `
 const CountTag = styled.div`
+  position: absolute;
+  top: -4px;
+  right: -12px;
   width: 20px;
   height: 20px;
   border-radius: 10px;
@@ -42,18 +37,18 @@ const Cart = () => {
 
   return (
     <StyledCart onClick={() => dispatch(openModal())}>
-      { !!modalVisible && 
-        <Modal onClose={closeModalCb} title="Мой выбор">
-          <ChosenList goods={chosen} />
-        </Modal>
-      }
-      МОЙ ВЫБОР
+      <CartIcon width="30px" height="30px"/>
       {
-      !!chosen.length && 
+        !!chosen.length && 
         <CountTag>
           {chosen.length}
         </CountTag>
       }
+    { !!modalVisible && 
+      <Modal onClose={closeModalCb} title="Мой выбор">
+        <ChosenList goods={chosen} />
+      </Modal>
+    }
     </StyledCart>
   )
 }

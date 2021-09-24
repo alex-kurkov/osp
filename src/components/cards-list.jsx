@@ -11,10 +11,14 @@ const List = styled.ul`
   flex-direction: column;
   gap: 8px;
   margin: 0;
-  `
+  flex-flow: column nowrap;
+  scroll-snap-type: y mandatory;
+
+`
 const ListItem = styled.li`
   list-style-type: none;
   padding: 8px;
+  scroll-snap-align: start;
 `
 
 const CardsList = ({goods}) => {

@@ -7,7 +7,7 @@ const StyledMenu = styled.nav`
   padding: 0;
   overflow: hidden;
   position: relative;
-  &::before {
+/*   &::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +26,7 @@ const StyledMenu = styled.nav`
     height: 100%;
     background: linear-gradient(270deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent});
     background: webkit-linear-gradient(270deg, ${p => p.theme.colors.background}, ${p => p.theme.colors.transparent})
-  }
+  } */
 `
 const StyledUl = styled.ul`
   padding: 0;

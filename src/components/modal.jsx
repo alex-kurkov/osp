@@ -15,7 +15,8 @@ const Overlay = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0, 0.7);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
 `
 const StyledModal = styled.div`
   max-width: 720px;

@@ -12,50 +12,59 @@ const StyledCard = styled.article`
   box-sizing: border-box;
   width: 100%;
   padding: 0;
-  height: auto;
-  padding-bottom: 100%;
-  position: relative;
   box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 8px 1px;
-  background-image: url(${p => !!p.img ? `${API_URL}${p.img}` : template});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   display: flex;
   flex-direction: column;
   gap: 4px;
   border-radius: 8px;
 `
-
-const Info = styled.div`
+const ImageBlock = styled.div`
   width: 100%;
-  max-height: ${p => p.infoVisible ? '200px' : '0'};
-  overflow: hidden;
-  transition: max-height .3s ease-in-out;
+  padding: 0 0 100% 0;
+  height: auto;
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  `
+const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px 4px 0 0;
 `
 const Block = styled.div`
+  position: relative;
   box-sizing: border-box;
-  position: absolute;
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 4px 4px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: fit-content;
-  background: linear-gradient(to bottom, transparent 0%, ${(p) => p.theme.colors.background} 50%);
-  padding: 40px 4px 2px 4px;
   justify-content: end;
-  border-radius: 0 0 4px 4px;
+`
+
+const Info = styled.div`
+  width: 100%;
+  max-height: ${p => p.infoVisible ? '1000px' : '0'};
+  overflow: hidden;
+  height: fit-content;
+  transition: max-height .3s ease-in-out;
 `
 const Title = styled.h3`
   font-size: 20px;
   font-weight: 700;
   text-align: left;
   line-height: 1.2;
+  padding-right: 40px;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
   min-height: 26px;
-  `
+`
 const StyledDescription = styled.p`
   color: ${p => p.theme.colors.textPrimary};
   font-size: 14px;
@@ -64,7 +73,7 @@ const StyledDescription = styled.p`
   overflow: hidden;
   margin: 0 0 8px 0;
   white-space: pre-line;
-  `
+`
 const NutritionBlock = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -133,8 +142,14 @@ const Card = ({ item }) => {
   }
 
   return (
-    <StyledCard img={image?.url}>
+    <StyledCard>
+      <ImageBlock>
+        <Image loading="lazy" src={image?.url ? `${API_URL}${image.url}` : template} alt={`изображение блюда ${name} в меню ресторана Остров Суши`}/>
+      </ImageBlock>
       <Block>
+        <InfoWrap>
+          <InfoIcon width="30px" height="30px" onClick={() => setInfoVisible(!infoVisible)} />
+        </InfoWrap>
         <Title>{name}</Title>
         <Info infoVisible={infoVisible}>
             <StyledDescription> {description} </StyledDescription>
@@ -152,12 +167,9 @@ const Card = ({ item }) => {
         
         <InfoBlock>
           <Price>{price} P.-</Price>
-          <LikeIcon width="32px" height="32px" liked={added} onClick={handleAdd} />          
+          <LikeIcon width="34px" height="34px" liked={added} onClick={handleAdd} />          
         </InfoBlock>
       </Block>
-      <InfoWrap>
-        <InfoIcon width="32px" height="32px" onClick={() => setInfoVisible(!infoVisible)} />
-      </InfoWrap>
     </StyledCard>
   )
 }

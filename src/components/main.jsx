@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ import Menu from './menu'
 
 const StyledNavigation = styled.div`
   width: 100%;
-  height: 38px;
+  height: 48px;
   padding: 4px;
   display: grid;
   grid-template-columns: 40px 1fr 40px;
@@ -17,7 +17,7 @@ const StyledNavigation = styled.div`
 `
 const StyledMain = styled.main`
   width: 100%;
-  height: calc(100vh - 144px);
+  height: calc(100vh - 154px);
   background-color: ${(p) => p.theme.colors.background};
   overflow: scroll;
 `
@@ -28,8 +28,6 @@ const Main = () => {
   const [ currentItemType, setCurrentItemType ] = useState(0);
   
   const menuItems = goods.map((item) => item.name);
-
-
 
   const next = () => {
     swiper?.slideNext()
