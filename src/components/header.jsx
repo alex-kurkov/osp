@@ -4,6 +4,7 @@ import Cart from './cart';
 import ThemeToggler from './theme-toggler';
 import Logo from './logo'
 import BurgerIcon from '../ui/icons/burger-icon';
+import { useHistory } from 'react-router';
 
 const StyledHeader = styled.header`
   box-sizing: border-box;
@@ -26,9 +27,10 @@ const Wrap = styled.div`
 `
 
 const Header = () => {
+  const history = useHistory();
   return (
     <StyledHeader>
-      <Logo width="120px" height="60px" />
+      <Logo handleClick={() => history.push('/')} width="120px" height="60px" />
       <Wrap>
         <ThemeToggler />
         <Cart width="30px" height="30px" />

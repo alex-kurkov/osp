@@ -7,6 +7,11 @@ const StyledMenu = styled.nav`
   padding: 4px;
   overflow: hidden;
   position: relative;
+  scrollbar-width: 0;
+  &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+  }
 /*   &::before {
     position: absolute;
     top: 0;
@@ -36,9 +41,11 @@ const StyledUl = styled.ul`
   overflow-x: scroll;
   flex-wrap: nowrap;
   height: 100%;
-  &::-webkit-scrollbar {
-    width: 0;
-}
+  scrollbar-width: 0;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+  }
 `
 
 const StyledLi = styled.li`

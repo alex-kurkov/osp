@@ -31,7 +31,7 @@ const CountTag = styled.div`
 
 const Cart = () => {
   const { chosen } = useSelector(store => store.cart);
-  const { isOpenModal, openModal, closeModal, toggleModal } = useModalDisclosure(false, {});
+  const { isOpenModal, openModal, closeModal } = useModalDisclosure(false, {});
 
   return (
     <StyledCart onClick={openModal}>

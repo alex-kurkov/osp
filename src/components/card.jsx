@@ -25,7 +25,7 @@ const ImageBlock = styled.div`
   height: auto;
   position: relative;
   border-radius: 4px 4px 0 0;
-  `
+`
 const Image = styled.img`
   position: absolute;
   top: 0;
@@ -83,7 +83,7 @@ const Card = ({ item }) => {
   } = item;
 
   const [added, setAdded] = useState(chosen.find(i => i.slug === slug));
-  const { isOpenModal, openModal, closeModal, toggleModal } = useModalDisclosure(false, {});
+  const { isOpenModal, closeModal, toggleModal } = useModalDisclosure(false, {});
 
   useEffect(() => {
     const itemFound = chosen.find(i => i.slug === slug)

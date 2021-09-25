@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import CardsList from './cards-list'
-import { useState } from 'react'
-import Menu from './menu'
+import CardsList from '../components/cards-list'
+import Menu from '../components/menu'
 
+const Page = styled.div`
+  width: 100%;
+  height: calc(100vh - 154px);
+`
 const StyledMain = styled.main`
   width: 100%;
   height: calc(100vh - 154px);
@@ -13,31 +17,27 @@ const StyledMain = styled.main`
   overflow: scroll;
 `
 
-const Main = () => {
+const MenuPage = () => {
   const { goods } = useSelector(state => state.cart);
   const [ swiper, setSwiper ] = useState(null);
   const [ currentItemType, setCurrentItemType ] = useState(0);
-  
-  const menuItems = goods.map((item) => item.name);
+  const history = useHistory();
 
-/*   const next = () => {
-    swiper?.slideNext()
-  }
-  const prev = () => {
-    swiper?.slidePrev()
-  } */
+  const menuItems = goods.map((item) => item.name);
   const handleClick = (idx) => {
     setCurrentItemType(idx);
     swiper.slideTo(idx, 200);
   }
 
   return (
-    <>
+    <Page>
       <Menu
         items={menuItems}
         activeItem={currentItemType} 
         onClick={handleClick}  
       />
+      <button onClick={() => history.push('/some')}>to some</button>
+      <button onClick={() => history.push('/tips')}>to tips</button>
       <StyledMain>
         <Swiper
           autoHeight={true}
@@ -63,8 +63,8 @@ const Main = () => {
           }
         </Swiper>
       </StyledMain>
-    </>
+    </Page>
   )
 }
 
-export default Main
+export default MenuPage;
