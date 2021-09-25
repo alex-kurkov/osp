@@ -13,6 +13,9 @@ export const cartSlice = createSlice({
       const dishes = [...action.payload].sort((a, b) => a['order'] - b['order']);
       state.goods = dishes;
     },
+    setChosen: (state, action) => {
+      state.chosen = [...action.payload];
+    },
     addIngredient: (state, action) => {
       state.chosen = [...state.chosen.concat(action.payload)];
     },
@@ -26,6 +29,7 @@ export const cartSlice = createSlice({
 });
 
 export const {
+  setChosen,
   addIngredient,
   removeIngredient,
   addGoods

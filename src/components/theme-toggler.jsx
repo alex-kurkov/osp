@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import { TOGGLE_THEME } from '../services/constants'
-import MoonIcon from '../ui/icons/moon-icon'
-import SunIcon from '../ui/icons/sun-icon'
+import React from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../services/reducers/theme/themeSlice';
+import MoonIcon from '../ui/icons/moon-icon';
+import SunIcon from '../ui/icons/sun-icon';
 
 const Wrapper = styled.article`
   display: block;
@@ -13,7 +13,6 @@ const Wrapper = styled.article`
     cursor: pointer;
   }
 `
-
 const Switch = styled.div`
   width: 60px;
   height: 30px;
@@ -23,13 +22,11 @@ const Switch = styled.div`
   position: relative;
   box-sizing: border-box;
 `
-
 const Icon = styled.div`
   position: absolute;
   top: 3px;
   left: ${(p) => p.activeTheme === 'dark' ? '3px' : '33px'};
 `
-
 const Bulb = styled.div`
   width: 24px;
   height: 24px;
@@ -46,13 +43,8 @@ const ThemeToggler = () => {
   const dispatch = useDispatch()
   const { theme } = useSelector((state) => state)
 
-  const toggleTheme = (e) => {
-    e.preventDefault()
-    dispatch({ type: TOGGLE_THEME })
-  }
-
   return (
-    <Wrapper onClick={toggleTheme}>
+    <Wrapper onClick={() => dispatch(toggleTheme())}>
       <Switch activeTheme={theme.active}>
         <Icon activeTheme={theme.active}>
           {theme.active === 'dark' ? <SunIcon /> : <MoonIcon /> }
