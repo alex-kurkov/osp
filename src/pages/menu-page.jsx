@@ -24,6 +24,7 @@ const MenuPage = () => {
   const history = useHistory();
 
   const menuItems = goods.map((item) => item.name);
+  
   const handleClick = (idx) => {
     setCurrentItemType(idx);
     swiper.slideTo(idx, 200);
@@ -36,8 +37,6 @@ const MenuPage = () => {
         activeItem={currentItemType} 
         onClick={handleClick}  
       />
-      <button onClick={() => history.push('/some')}>to some</button>
-      <button onClick={() => history.push('/tips')}>to tips</button>
       <StyledMain>
         <Swiper
           autoHeight={true}
@@ -47,8 +46,7 @@ const MenuPage = () => {
             setCurrentItemType(i.activeIndex)
           }}
           onSwiper={(swiper) => {
-            setSwiper(swiper)
-            setCurrentItemType(swiper.activeIndex)
+            setSwiper(swiper);
           }}
         >
           {

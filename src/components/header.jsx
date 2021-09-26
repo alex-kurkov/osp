@@ -5,12 +5,14 @@ import ThemeToggler from './theme-toggler';
 import Logo from './logo'
 import BurgerIcon from '../ui/icons/burger-icon';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { openNav } from '../services/reducers/control/controlSlice';
 
 const StyledHeader = styled.header`
   box-sizing: border-box;
   width: 100%;
   height: 100px;
-  padding: 4px;
+  padding: 4px 8px;
   display: flex;
   gap: 8px;
   justify-content: space-between;
@@ -21,20 +23,22 @@ const StyledHeader = styled.header`
   `
 const Wrap = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: flex-end;
   align-items: center;
 `
 
 const Header = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
     <StyledHeader>
       <Logo handleClick={() => history.push('/')} width="120px" height="60px" />
       <Wrap>
         <ThemeToggler />
         <Cart width="30px" height="30px" />
-        <BurgerIcon width="30px" height="30px" />
+        <BurgerIcon width="30px" height="30px" onClick={() => dispatch(openNav())} />
       </Wrap>
     </StyledHeader>
   )

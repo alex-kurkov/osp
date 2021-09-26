@@ -15,11 +15,8 @@ const Tips = styled.div`
   }
 `
 const Iframe = styled.iframe`
-  position: absolute;
-  top:0;
-  left: 0;
   width: 100%;
-  height: 1000px;
+  height: 500px;
   border: 0;
 `;
 const Informer = styled.p`
@@ -36,17 +33,17 @@ const Informer = styled.p`
 const TipsPage = () => {
   return (
     <Tips>
+      <Informer>
+        <a target="_blank" href="https://tips.yandex.ru/guest/payment/303640"> Ваш браузер не поддерживает технологию встроенных фреймов,
+          но можно оставить чаевые по ссылке ниже
+        </a>
+      </Informer>
       <Iframe
         loading="lazy" 
         allowfullscreen
         allow="payment"
-        sandbox="allow-forms allow-same-origin allow-scripts"
+        sandbox="allow-forms allow-same-origin allow-scripts allow-modals allow-popups"
         src="https://tips.yandex.ru/guest/payment/303640">
-          <Informer>
-            Ваш браузер не поддерживает технологию встроенных фреймов,
-            но можно оставить чаевые по ссылке ниже
-          </Informer>
-          <Link to="https://tips.yandex.ru/guest/payment/303640" />
       </Iframe>
     </Tips>
   )

@@ -5,11 +5,16 @@ const HomePage = () => {
   const history = useHistory();
   return (
     <div>
-      <button onClick={() => history.push('/some')}>to bar</button>
-      <button onClick={() => history.push('/menu')}>to menu</button>
-      <button onClick={() => history.push('/tips')}>to tips</button>
+      <button type="button" onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation()
+        history.push('/bar');
+        console.log(history)
+      }}>to bar</button>
+      <button type="button" onClick={() => history.push('/menu')}>to menu</button>
+      <button type="button" onClick={() => history.push('/service')}>to tips</button>
     </div>
   )
 }
 
-export default HomePage
+export default HomePage;
