@@ -89,7 +89,7 @@ const Modal = ({ title = '', onClose = () => {}, children }) => {
         </StyledModal>
       </Overlay>
     ),
-    modalRoot,
+    modalRoot
   );
 };
 

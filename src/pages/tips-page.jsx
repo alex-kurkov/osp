@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
 const Tips = styled.div`
   max-width: 100%;
-  height: calc(100vh - 154px);
+  height: calc(100vh - 100px);
   position: relative;
   overflow: hidden;
   padding-bottom: 100%;

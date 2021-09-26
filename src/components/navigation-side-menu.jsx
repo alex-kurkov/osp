@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import styled from "styled-components";
@@ -18,6 +19,8 @@ const StyledNavigation = styled.nav`
   display: grid;
   grid-template-columns: 1fr 40px;
   gap: 4px;
+  background-color: ${p => p.theme.colors.background};
+  padding: 16px 8px;
 `
 const LinkBox = styled.div`
   display: flex;
@@ -54,6 +57,7 @@ const StyledLink = styled.a`
     margin-bottom: 4px;
   }
 `
+const navigationRoot = document.getElementById('navigation');
 
 const NavigationSideMenu = () => {
   const dispatch = useDispatch();
@@ -67,7 +71,7 @@ const NavigationSideMenu = () => {
     }, 320)
   }
 
-  return (
+  return navigationRoot && ReactDOM.createPortal((
     <StyledNavigation open={navOpen}>
       <LinkBox>
       {navMenuItems.map((item) => (
@@ -79,6 +83,7 @@ const NavigationSideMenu = () => {
         <CloseIcon width="32px" height="32px" onClick={() => dispatch(closeNav())} />
       </CloseIconWrap>
     </StyledNavigation>
+  ), navigationRoot
   )
 };
 

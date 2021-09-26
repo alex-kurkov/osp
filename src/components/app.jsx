@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { LightTheme, DarkTheme } from '../ui/theme';
 import { useEffect } from 'react';
 import { getGoods } from '../services/actions/api';
-import { Header, Loader, NavigationSideMenu } from '.'
+import { Header, Loader, NavigationSideMenu, Footer } from '.'
 import { useLocalStorage } from '../utils/hooks';
 import { setChosen } from '../services/reducers/cart/cartSlice';
 import { setTheme } from '../services/reducers/theme/themeSlice';
@@ -61,6 +61,7 @@ const App = () => {
               <Route path="*" render={() => <Redirect to="/" />} />
             </Switch>
         }
+        <Footer />
       </StyledApp>
     </ThemeProvider>
   )

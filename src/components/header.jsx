@@ -11,7 +11,6 @@ import { openNav } from '../services/reducers/control/controlSlice';
 const StyledHeader = styled.header`
   box-sizing: border-box;
   width: 100%;
-  height: 100px;
   padding: 4px 8px;
   display: flex;
   gap: 8px;

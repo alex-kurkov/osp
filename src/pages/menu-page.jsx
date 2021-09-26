@@ -8,11 +8,11 @@ import Menu from '../components/menu'
 
 const Page = styled.div`
   width: 100%;
-  height: calc(100vh - 154px);
+  height: calc(100vh - 100px);
 `
 const StyledMain = styled.main`
   width: 100%;
-  height: calc(100vh - 154px);
+  height: calc(100% - 48px);
   background-color: ${(p) => p.theme.colors.background};
   overflow: scroll;
 `

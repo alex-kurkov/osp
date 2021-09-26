@@ -3,6 +3,7 @@ import Card from "./card";
 import CardsList from "./cards-list";
 import Cart from "./cart";
 import ChosenList from "./chosen-list";
+import Footer from "./footer";
 import Header from "./header";
 import Loader from "./loader";
 import Logo from "./logo";
@@ -19,6 +20,7 @@ export {
   CardsList,
   Cart,
   ChosenList,
+  Footer,
   Header,
   Loader,
   Logo,
