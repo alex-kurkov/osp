@@ -38,48 +38,61 @@ const Image = styled.img`
 `
 const Block = styled.div`
   position: relative;
-  box-sizing: border-box;
   width: 100%;
   height: auto;
   border-radius: 0 0 4px 4px;
   padding: 4px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr min-content 30px;
+  grid-template-areas: 
+            "name price like"
+            "description price like";
   gap: 4px;
-  justify-content: end;
 `
 const Title = styled.h3`
+  grid-area: name;
   font-size: 20px;
   font-weight: 700;
   text-align: left;
   line-height: 1.2;
-  padding-right: 40px;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
   min-height: 26px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
-
-const PriceBlock = styled.div`
-  border-top: 1px solid ${p => p.theme.colors.textPrimary};
-  height: 32px;
-  box-sizing: border-box;
-  display: flex;
-  width: 100%;
-  gap: 8px;
-  justify-content: space-between;
-  align-items: center;
+const Description = styled.p`
+  grid-area: description;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.2;
+  margin: 0;
+  color: ${p => p.theme.colors.textPrimary};
+  min-height: 26px;
+  opacity: .7;
 `
 const Price = styled.span`
+  grid-area: price;
   font-size: 20px;
   font-weight: 600;
   color: ${p => p.theme.colors.textPrimary};
+  align-self: start;
+  justify-self: end;
+  white-space: nowrap;
+`
+const IconWrap = styled.span`
+  grid-area: like;
+  align-self: start;
+  justify-self: end;
 `
 
 const BarlistCard = ({ item }) => {
   const dispatch = useDispatch();
   const { chosen } = useSelector(store => store.cart);
   const {
-    name, price, image, slug,
+    name, price, image, slug, description
   } = item;
 
   const [added, setAdded] = useState(chosen.find(i => i.slug === slug));
@@ -100,9 +113,11 @@ const BarlistCard = ({ item }) => {
 
   return (
     <StyledCard>
-      <ImageBlock onClick={toggleModal}>
-        <Image loading="lazy" src={image?.url ? `${API_URL}${image.url}` : template} alt={`изображение блюда ${name} в меню ресторана Остров Суши`}/>
-      </ImageBlock>
+      { image?.url &&
+        <ImageBlock onClick={toggleModal}>
+          <Image loading="lazy" src={image?.url ? `${API_URL}${image.url}` : template} alt={`изображение напитка ${name} в меню ресторана Остров Суши`}/>
+        </ImageBlock>
+      }
       {
         !!isOpenModal && 
           <>
@@ -115,10 +130,11 @@ const BarlistCard = ({ item }) => {
       }
       <Block>
         <Title>{name}</Title>
-        <PriceBlock>
-          <Price>{price} P.-</Price>
-          <LikeIcon width="24px" height="24px" liked={added} onClick={handleAdd} />          
-        </PriceBlock>
+        <Price>{price} P.-</Price>
+        <IconWrap>
+          <LikeIcon width="24px" height="24px" liked={added} onClick={handleAdd} />
+        </IconWrap>          
+        <Description>{description}</Description>
       </Block>
     </StyledCard>
   )
