@@ -17,12 +17,12 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${(p) => p.theme.colors.background};
-  height: 60px;
+  height: 80px;
   z-index: 10;
   `
 const Wrap = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 14px;
   justify-content: flex-end;
   align-items: center;
 `
@@ -33,11 +33,11 @@ const Header = () => {
 
   return (
     <StyledHeader>
-      <Logo handleClick={() => history.push('/')} width="120px" height="60px" />
+      <Logo handleClick={() => history.push('/')} width="160px" height="80px" />
       <Wrap>
         <ThemeToggler />
-        <Cart width="30px" height="30px" />
-        <BurgerIcon width="30px" height="30px" onClick={() => dispatch(openNav())} />
+        <Cart/>
+        <BurgerIcon width="40px" height="40px" onClick={() => dispatch(openNav())} />
       </Wrap>
     </StyledHeader>
   )

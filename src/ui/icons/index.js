@@ -13,5 +13,5 @@ export {
   InstaIcon,
   YaIcon,
   PhoneIcon,
-  MailIcon
+  MailIcon,
 }

@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   chosen: [],
   goods: [],
+  drinks: []
 };
 
 export const cartSlice = createSlice({
@@ -12,6 +13,10 @@ export const cartSlice = createSlice({
     addGoods: (state, action) => {
       const dishes = [...action.payload].sort((a, b) => a['order'] - b['order']);
       state.goods = dishes;
+    },
+    addDrinks: (state, action) => {
+      const drinks = [...action.payload].sort((a, b) => a['order'] - b['order']);
+      state.drinks = drinks;
     },
     setChosen: (state, action) => {
       state.chosen = [...action.payload];
@@ -32,7 +37,8 @@ export const {
   setChosen,
   addIngredient,
   removeIngredient,
-  addGoods
+  addGoods,
+  addDrinks
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -5,7 +5,7 @@ import { LinkIcon } from '../ui/icons'
 
 const Tips = styled.div`
   max-width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 120px);
   overflow-y: scroll;
   display: flex;
   flex-direction: column;

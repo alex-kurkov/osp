@@ -53,9 +53,9 @@ export const socialLinks = [
 
 export const contacts = [
   {
-    name: 'Телефон +79220000000',
+    name: 'Телефон +79220573700',
     slug: 'tel',
-    url: 'tel:+79220530533',
+    url: 'tel:+79220573700',
     logo: <PhoneIcon width="60" height="60"/>,
   },
   {

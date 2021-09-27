@@ -7,8 +7,8 @@ import CartIcon from '../ui/icons/cart-icon';
 import { useModalDisclosure } from '../utils/hooks';
 
 const StyledCart = styled.article`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   box-sizing: border-box;
   position: relative;
 `
@@ -35,7 +35,7 @@ const Cart = () => {
 
   return (
     <StyledCart onClick={openModal}>
-      <CartIcon width="30px" height="30px"/>
+      <CartIcon width="40px" height="40px"/>
       {
         !!chosen.length && 
         <CountTag>

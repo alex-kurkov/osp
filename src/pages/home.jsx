@@ -5,7 +5,7 @@ import { navMenuItems } from '../utils/data'
 
 const Page = styled.div`
   width: 100%100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 120px);
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   gap: 4px;

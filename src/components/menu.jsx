@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledMenu = styled.nav`
   width: 100%;
-  max-height: 48px;
+  height: 40px;
   padding: 4px;
   overflow: hidden;
   position: relative;
@@ -63,7 +63,7 @@ const StyledLi = styled.li`
     width: ${p => p.active ? '100%' : '0'};
     height: 2px;
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     left: 0;
     background: 
       linear-gradient(90deg, ${p => p.theme.colors.transparent}, ${p => p.theme.colors.textPrimary});
@@ -71,7 +71,7 @@ const StyledLi = styled.li`
 
   &::after {
     content: '';
-    height: 100%;
+    height: 70%;
     position: absolute;
     top: 0;
     right: -6px;

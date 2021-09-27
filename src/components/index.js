@@ -1,3 +1,4 @@
+import BarlistCard from "./barlist-card";
 import CardDetails from "./card-details";
 import Card from "./card";
 import CardsList from "./cards-list";
@@ -13,8 +14,8 @@ import NavigationSideMenu from "./navigation-side-menu";
 import ThemeToggler from "./theme-toggler";
 
 
-
 export {
+  BarlistCard,
   Card,
   CardDetails,
   CardsList,

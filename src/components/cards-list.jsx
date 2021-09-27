@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from './card'
+import { BarlistCard, Card } from '.'
 
 const List = styled.ul`
   box-sizing: border-box;
@@ -21,14 +21,14 @@ const ListItem = styled.li`
   scroll-snap-align: start;
 `
 
-const CardsList = ({goods}) => {
+const CardsList = ({goods, type}) => {
   return (
     <List>
       { goods && !!goods.length &&
         goods.map(item => {
           return (
             <ListItem key={item.slug}>
-              <Card item={item} />
+              {type === 'menu' ? <Card item={item} /> : <BarlistCard item={item} />}
             </ListItem>
           )
         })

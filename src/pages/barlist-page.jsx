@@ -16,12 +16,12 @@ const StyledMain = styled.main`
   overflow: scroll;
 `
 
-const MenuPage = () => {
-  const { goods } = useSelector(state => state.cart);
+const BarListPage = () => {
+  const { drinks } = useSelector(state => state.cart);
   const [ swiper, setSwiper ] = useState(null);
   const [ currentItemType, setCurrentItemType ] = useState(0);
 
-  const menuItems = goods.map((item) => item.name);
+  const menuItems = drinks.map((item) => item.name);
   
   const handleClick = (idx) => {
     setCurrentItemType(idx);
@@ -48,10 +48,10 @@ const MenuPage = () => {
           }}
         >
           {
-            goods.map((i) => {
+            drinks.map((i) => {
               return (
                 <SwiperSlide key={i.slug}>
-                  <CardsList goods={i.items} type="menu" />
+                  <CardsList goods={i.items} type="bar" />
                 </SwiperSlide>
               )
             })
@@ -63,4 +63,4 @@ const MenuPage = () => {
   )
 }
 
-export default MenuPage;
+export default BarListPage;

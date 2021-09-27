@@ -5,9 +5,15 @@ const getGoodsRequest = async () => await fetch(
 )
   .then((res) => res.json())
   .catch(e => console.log('Похоже, нет интернета...', e))
+const getBeveragesRequest = async () => await fetch(
+  `${API_URL}/beverages`,
+)
+  .then((res) => res.json())
+  .catch(e => console.log('Похоже, нет интернета...', e))
 
 const requests = {
   getGoodsRequest,
+  getBeveragesRequest
 };
 
 export default requests;

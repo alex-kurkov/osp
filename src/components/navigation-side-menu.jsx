@@ -25,7 +25,7 @@ const StyledNavigation = styled.nav`
 const LinkBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
   padding: 0 8px;
 `
 const CloseIconWrap = styled.div`
@@ -44,10 +44,10 @@ const StyledLink = styled.a`
     content: '';
     height: 100%;
     position: absolute;
-    bottom: -8px;
+    bottom: -12px;
     left: 0;
     height: 2px;
-    width: 30%;
+    width: 40%;
     background: linear-gradient(to left, ${p => p.theme.colors.transparent}, ${p => p.theme.colors.textPrimary});
   }
   &:last-of-type::after {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import { LightTheme, DarkTheme } from '../ui/theme';
 import { useEffect } from 'react';
-import { getGoods } from '../services/actions/api';
+import { getGoods, getBeverages } from '../services/actions/api';
 import { Header, Loader, NavigationSideMenu, Footer } from '.'
 import { useLocalStorage } from '../utils/hooks';
 import { setChosen } from '../services/reducers/cart/cartSlice';
@@ -12,7 +12,8 @@ import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router';
 import {
   HomePage,
   MenuPage,
-  TipsPage
+  TipsPage,
+  BarListPage
  } from '../pages'
 
 
@@ -36,6 +37,7 @@ const App = () => {
     if (savedTheme.active) dispatch(setTheme(savedTheme.active));
     if (savedChosen.length > 0) dispatch(setChosen(savedChosen));
     dispatch(getGoods());
+    dispatch(getBeverages());
   }, [])
 
   useEffect(() => {
@@ -56,7 +58,7 @@ const App = () => {
             <Switch location={location}>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/menu" component={MenuPage} />
-              <Route exact path="/bar" render={()=> (<div><a style={{color: 'red', fontSize: '40px'}} onClick={() => history.goBack()}>НАЗАД </a></div>)} />
+              <Route exact path="/bar" component={BarListPage} />
               <Route exact path="/service" component={TipsPage} />
               <Route path="*" render={() => <Redirect to="/" />} />
             </Switch>
