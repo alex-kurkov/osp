@@ -13,7 +13,15 @@ const List = styled.ul`
   margin: 0;
   flex-flow: column nowrap;
   scroll-snap-type: y mandatory;
-
+  @media screen and (min-width: 475px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
+  }
+  @media screen and (min-width: 960px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 const ListItem = styled.li`
   list-style-type: none;

@@ -56,7 +56,8 @@ const Title = styled.h3`
   padding-right: 40px;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
-  min-height: 26px;
+  height: 48px;
+  overflow: hidden;
 `
 
 const PriceBlock = styled.div`
