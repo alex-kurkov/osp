@@ -16,6 +16,7 @@ const List = styled.ul`
   @media screen and (min-width: 475px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-row: auto;
     grid-auto-flow: dense;
   }
   @media screen and (min-width: 960px) {

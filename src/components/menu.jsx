@@ -56,6 +56,7 @@ const StyledLi = styled.li`
   color: ${p => p.theme.colors.textPrimary};
   white-space: nowrap;
   position: relative;
+  cursor: pointer;
 
   &::before{
     transition: width .3s ease-in-out;

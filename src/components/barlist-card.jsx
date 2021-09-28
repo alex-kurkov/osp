@@ -57,10 +57,8 @@ const Title = styled.h3`
   line-height: 1.2;
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
-  white-space: nowrap;
   height: 48px;
   overflow: hidden;
-  text-overflow: ellipsis;
 `
 const Description = styled.p`
   grid-area: description;

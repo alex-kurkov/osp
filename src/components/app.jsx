@@ -21,7 +21,12 @@ const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
   width: 100%;
   height: 100vh;
-`;
+  `;
+const AppWrap = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+`
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +35,6 @@ const App = () => {
   const { apiRequestInProgress } = useSelector((store) => store.api)
   const [ savedChosen, setSavedChosen ] = useLocalStorage('chosen', []);
   const [ savedTheme, setSavedTheme ] = useLocalStorage('theme', 'dark');
-  const history = useHistory();
   let location = useLocation();
 
   useEffect(() => {
@@ -51,19 +55,21 @@ const App = () => {
   return (
     <ThemeProvider theme={theme.active === 'light' ? LightTheme : DarkTheme}>
       <StyledApp>
-        { apiRequestInProgress && <Loader /> }
-        <Header />
-        <NavigationSideMenu />
-        {!!goods.length &&
-            <Switch location={location}>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/menu" component={MenuPage} />
-              <Route exact path="/bar" component={BarListPage} />
-              <Route exact path="/service" component={TipsPage} />
-              <Route path="*" render={() => <Redirect to="/" />} />
-            </Switch>
-        }
-        <Footer />
+        <AppWrap>
+          { apiRequestInProgress && <Loader /> }
+          <Header />
+          <NavigationSideMenu />
+          {!!goods.length &&
+              <Switch location={location}>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/menu" component={MenuPage} />
+                <Route exact path="/bar" component={BarListPage} />
+                <Route exact path="/service" component={TipsPage} />
+                <Route path="*" render={() => <Redirect to="/" />} />
+              </Switch>
+          }
+          <Footer />
+        </AppWrap>
       </StyledApp>
     </ThemeProvider>
   )

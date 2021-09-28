@@ -12,14 +12,20 @@ const StyledNavigation = styled.nav`
   height: auto;
   max-height: ${p => p.open ? '700px' : '0px'};
   transform: ${p => p.open ? 'translateY(0)' : 'translateY(-100%)'};
-  position: relative;
   opacity: ${p => p.open ? '1' : '0'};
   visibility: ${p => p.open ? 'visible' : 'hidden'};
   transition: all 300ms ease-in-out;
+  background-color: ${p => p.theme.colors.background};
+
+`
+const NavWrap = styled.nav`
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 40px;
   gap: 4px;
-  background-color: ${p => p.theme.colors.background};
   padding: 16px 8px;
 `
 const LinkBox = styled.div`
@@ -73,15 +79,18 @@ const NavigationSideMenu = () => {
 
   return navigationRoot && ReactDOM.createPortal((
     <StyledNavigation open={navOpen}>
-      <LinkBox>
-      {navMenuItems.map((item) => (
-        <StyledLink onClick={() => handleButtonClick(item.url)} key={item.slug}>{item.name}</StyledLink>
+      <NavWrap>
+        <LinkBox>
+        {navMenuItems.map((item) => (
+          <StyledLink onClick={() => handleButtonClick(item.url)} key={item.slug}>{item.name}</StyledLink>
 
-      ))}
-      </LinkBox>
-      <CloseIconWrap>
-        <CloseIcon width="32px" height="32px" onClick={() => dispatch(closeNav())} />
-      </CloseIconWrap>
+        ))}
+        </LinkBox>
+        <CloseIconWrap>
+          <CloseIcon width="32px" height="32px" onClick={() => dispatch(closeNav())} />
+        </CloseIconWrap>
+
+      </NavWrap>
     </StyledNavigation>
   ), navigationRoot
   )
