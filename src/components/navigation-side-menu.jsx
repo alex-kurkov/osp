@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -7,19 +7,19 @@ import { closeNav } from "../services/reducers/control/controlSlice";
 import CloseIcon from "../ui/icons/close-icon";
 import { navMenuItems } from "../utils/data";
 
-const StyledNavigation = styled.nav`
+const StyledNavigation = styled.div`
   width: 100%;
-  height: auto;
-  max-height: ${p => p.open ? '700px' : '0px'};
+  height: 100vh;
+  max-height: ${p => p.open ? '10000px' : '0px'};
   transform: ${p => p.open ? 'translateY(0)' : 'translateY(-100%)'};
   opacity: ${p => p.open ? '1' : '0'};
   visibility: ${p => p.open ? 'visible' : 'hidden'};
   transition: all 300ms ease-in-out;
-  background-color: ${p => p.theme.colors.background};
-
+  backdrop-filter: blur(4px);
 `
 const NavWrap = styled.nav`
   max-width: 1440px;
+  background-color: ${p => p.theme.colors.background};
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -72,13 +72,25 @@ const NavigationSideMenu = () => {
 
   const handleButtonClick = (url) => {
     dispatch(closeNav());
-    setTimeout(() => {
-      history.push(url);
-    }, 320)
+    history.push(url);
   }
+  const handleOverlayClick = (e) => {
+    e.stopPropagation();
+    if (e.target !== e.currentTarget) return;
+    dispatch(closeNav());
+  };
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key !== 'Escape') return;
+      dispatch(closeNav());
+    };
+    window.addEventListener('keydown', closeByEscape);
+    return () => window.removeEventListener('keydown', closeByEscape);
+  }, []);
 
   return navigationRoot && ReactDOM.createPortal((
-    <StyledNavigation open={navOpen}>
+    <StyledNavigation open={navOpen} onClick={handleOverlayClick}>
       <NavWrap>
         <LinkBox>
         {navMenuItems.map((item) => (
