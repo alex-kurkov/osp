@@ -29,7 +29,7 @@ const Footer = () => {
         &copy; {now.getFullYear()} Остров Суши
       </FooterText>
       <FooterText as="a" href="https://github.com/alex-kurkov" target="_blank">
-        &copy; Alex
+        &copy; AK
       </FooterText>
     </StyledFooter>
   )

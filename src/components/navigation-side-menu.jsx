@@ -10,11 +10,13 @@ import { navMenuItems } from "../utils/data";
 const StyledNavigation = styled.div`
   width: 100%;
   height: 100vh;
+  z-index: 2;
   max-height: ${p => p.open ? '10000px' : '0px'};
   transform: ${p => p.open ? 'translateY(0)' : 'translateY(-100%)'};
   opacity: ${p => p.open ? '1' : '0'};
   visibility: ${p => p.open ? 'visible' : 'hidden'};
   transition: all 300ms ease-in-out;
+  background-color: ${p => p.theme.colors.transparent};
   backdrop-filter: blur(4px);
 `
 const NavWrap = styled.nav`

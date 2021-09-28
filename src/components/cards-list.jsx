@@ -12,7 +12,13 @@ const List = styled.ul`
   gap: 8px;
   margin: 0;
   flex-flow: column nowrap;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scrollbar-width: 0;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+  }
   @media screen and (min-width: 475px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
