@@ -8,7 +8,7 @@ import { Header, Loader, NavigationSideMenu, Footer, Notifications } from '.'
 import { useLocalStorage } from '../utils/hooks';
 import { setChosen } from '../services/reducers/cart/cartSlice';
 import { setTheme } from '../services/reducers/theme/themeSlice';
-import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router';
+import { Redirect, Route, Switch, useLocation } from 'react-router';
 import {
   HomePage,
   MenuPage,
@@ -17,8 +17,6 @@ import {
  } from '../pages'
 import { addNotification } from '../services/reducers/control/controlSlice';
 import { v4 as uuidv4 } from 'uuid';
-import { addSelfDestroyedNot } from '../services/actions/notifications';
-
 
 const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
@@ -62,7 +60,7 @@ const App = () => {
           <Notifications />
           { apiRequestInProgress && <Loader /> }
           <Header />
-          <button onClick={() => dispatch(addSelfDestroyedNot(dispatch, 
+          <button onClick={() => dispatch(addNotification( 
               {
                 id: uuidv4(),
                 title: `ОЧЕНЬ ВАЖНЫЙ ТИТУЛ${uuidv4}`,

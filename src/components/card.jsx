@@ -8,6 +8,8 @@ import { API_URL } from '../utils/requests';
 import template from '../images/template-image.png'
 import CardDetails from './card-details';
 import { useModalDisclosure } from '../utils/hooks';
+import { v4 as uuidv4 } from 'uuid';
+import { addNotification } from '../services/reducers/control/controlSlice';
 
 const StyledCard = styled.article`
   box-sizing: border-box;
@@ -92,7 +94,16 @@ const Card = ({ item }) => {
   }, [chosen, slug, isOpenModal])
 
   const handleAdd = () => {
-    if (added) {
+    if (!item.available) {
+      dispatch(addNotification(
+        {
+          id: uuidv4(),
+          title: 'МЫ СОЖАЛЕЕМ!',
+          content: `Блюдо ${name.toUpperCase()} закончилось. Но скоро оно появится)`,
+          lifetime: 3000,
+        },
+      ))
+    } else if (added) {
       dispatch(removeIngredient(item))
     } else {
       dispatch(addIngredient(item))

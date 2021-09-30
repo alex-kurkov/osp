@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -57,15 +57,6 @@ const notificationRoot = document.getElementById('notification');
 const Notification = ({ item }) => {
   const dispatch = useDispatch();
   const { id, title, content } = item;
-
-/*   useEffect(() => {
-    if (lifetime) {
-      setTimeout(() => {
-        dispatch(removeNotification(id));
-      }, lifetime);
-    }
-  }, []) */
-
   return (
     <CSSTransition
       timeout={300}
