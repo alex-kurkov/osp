@@ -18,6 +18,7 @@ const MenuItem = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  cursor: pointer;
 `
 const TextWrap = styled.div`
   height: 60px;

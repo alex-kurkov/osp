@@ -10,10 +10,6 @@ const InfoBlock = styled.div`
   gap: 8px;
   align-items: center;
   margin-bottom: 8px;
-  &:first-of-type{
-    padding-bottom: 8px;
-    border-bottom: ${p => p.theme.colors.textPrimary} 2px solid;
-  }
 `
 const ChosenInformer = styled.span`
   display: inline-block;
@@ -43,15 +39,12 @@ const Price = styled.p`
   text-align: right;
   color: ${p => p.theme.colors.textPrimary};
 `
-const NutritionTitle = styled.h4`
-  font-size: 14px;
-  font-weight: 500;
-  text-align: left;
-  line-height: 1.2;
-  margin: 0;
-  color: ${p => p.theme.colors.textPrimary};
+const PriceWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `
-const NutritionValue = styled.p`
+const Weight = styled.p`
   font-size: 12px;
   font-weight: 400;
   text-align: left;
@@ -88,17 +81,10 @@ const CardDetails = ({ item, handleAdd, added, closeModalCb }) => {
       <InfoBlock>
         <Image src={image && image.url ? `${API_URL}${image.url}` : thumbTemplate} loading="lazy"/>
         <Description>{description}</Description>
-        <Price>{price}.-</Price>
-      </InfoBlock>
-      <InfoBlock>
-        <NutritionTitle>Б / Ж / У</NutritionTitle>
-        <NutritionTitle>Калорийность</NutritionTitle>
-        <NutritionTitle>Вес</NutritionTitle>
-        <NutritionValue>
-          {nutrition?.protein || '-'} / {nutrition?.fat || '-'} / {nutrition?.carbohydrates || '-'}
-        </NutritionValue>
-        <NutritionValue>{nutrition?.calories || 'н/д'}</NutritionValue>
-        <NutritionValue>{nutrition?.weight || '-'}</NutritionValue>
+        <PriceWrap>
+          <Price>{price}.-</Price>
+          <Weight>{nutrition?.weight ? `${nutrition.weight} гр.` : ''}</Weight>
+        </PriceWrap>
       </InfoBlock>
       <StyledButton onClick={handleAdd}>
         {added? 'Убрать из заказа' : 'Добавить к заказу'}

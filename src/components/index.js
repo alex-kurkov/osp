@@ -12,7 +12,7 @@ import Menu from "./menu";
 import Modal from "./modal";
 import NavigationSideMenu from "./navigation-side-menu";
 import ThemeToggler from "./theme-toggler";
-
+import Notifications from "./notifications/index";
 
 export {
   BarlistCard,
@@ -28,5 +28,6 @@ export {
   Menu,
   Modal,
   NavigationSideMenu,
+  Notifications,
   ThemeToggler
 }

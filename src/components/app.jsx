@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { LightTheme, DarkTheme } from '../ui/theme';
 import { useEffect } from 'react';
 import { getGoods, getBeverages } from '../services/actions/api';
-import { Header, Loader, NavigationSideMenu, Footer } from '.'
+import { Header, Loader, NavigationSideMenu, Footer, Notifications } from '.'
 import { useLocalStorage } from '../utils/hooks';
 import { setChosen } from '../services/reducers/cart/cartSlice';
 import { setTheme } from '../services/reducers/theme/themeSlice';
@@ -56,6 +56,7 @@ const App = () => {
     <ThemeProvider theme={theme.active === 'light' ? LightTheme : DarkTheme}>
       <StyledApp>
         <AppWrap>
+          <Notifications />
           { apiRequestInProgress && <Loader /> }
           <Header />
           <NavigationSideMenu />
