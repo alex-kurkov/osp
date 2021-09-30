@@ -18,6 +18,9 @@ const ChosenInformer = styled.span`
   text-align: left;
   line-height: 1.2;
   margin: 0 0 8px 0;
+  &:nth-child(2) {
+    margin: 0 0 8px 12px;
+  }
 `
 const Image = styled.img`
   width: 80px;
@@ -65,17 +68,21 @@ const StyledButton = styled.a`
   box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 5px -1px;
   text-decoration: none;
   margin: 4px auto;
+  cursor: pointer;
 `;
 
 const CardDetails = ({ item, handleAdd, added, closeModalCb }) => {
   const {
-    name, price, image, description, nutrition
+    name, price, image, description, nutrition, available
   } = item;
 
   return (
     <Modal onClose={closeModalCb} title={name}>
         <ChosenInformer added={added}>
           {added ? 'Выбрано' : 'Пока не в корзине'}
+        </ChosenInformer>
+        <ChosenInformer added={available}>
+          {available ? 'доступно' : 'закончилось'}
         </ChosenInformer>
 
       <InfoBlock>
@@ -86,9 +93,9 @@ const CardDetails = ({ item, handleAdd, added, closeModalCb }) => {
           <Weight>{nutrition?.weight ? `${nutrition.weight} гр.` : ''}</Weight>
         </PriceWrap>
       </InfoBlock>
-      <StyledButton onClick={handleAdd}>
+      {!!available && <StyledButton onClick={handleAdd}>
         {added? 'Убрать из заказа' : 'Добавить к заказу'}
-      </StyledButton>
+      </StyledButton>}
     </Modal>
   )
 }

@@ -1,10 +1,8 @@
 import { useCallback } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ReactDOM from 'react-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CloseIcon from '../../ui/icons/close-icon';
-import './styles.css';
 import { removeNotification } from '../../services/reducers/control/controlSlice';
 
 const NotsWrap = styled.div`
@@ -13,8 +11,19 @@ const NotsWrap = styled.div`
   margin: 0 auto;
   height: ${p => p.customHeight};
   transition: height 300ms ease-in-out;
+  display: flex;
+  overflow: hidden;
+  flex-flow: column;
+  gap: 10px;
 `
-
+const appear = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 const StyledNotification = styled.article`
   position: relative;
   height: 70px;
@@ -23,10 +32,7 @@ const StyledNotification = styled.article`
   padding: 4px 36px 4px 8px;
   background-color:${p => p.theme.colors.activeElementBg};
   opacity: .9;
-  margin-bottom: 10px;
-  &:last-of-type {
-    margin-bottom: 20px;
-  }
+  animation: ${appear} 300ms ease-in-out;
 `
 
 const IconWrap = styled.div`
@@ -41,6 +47,8 @@ const Title = styled.h4`
   text-align: left;
   color: ${p => p.theme.colors.textPrimary};
   overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: nowrap;
 `
 const Content = styled.div`
   margin: 0;
@@ -54,43 +62,32 @@ const Content = styled.div`
 
 const notificationRoot = document.getElementById('notification');
 
-const Notification = ({ item }) => {
-  const dispatch = useDispatch();
-  const { id, title, content } = item;
-  return (
-    <CSSTransition
-      timeout={300}
-      classNames="item">
-      <StyledNotification>
-        <IconWrap>
-          <CloseIcon onClick={() => dispatch(removeNotification(id))} width="24" height="24" />
-        </IconWrap>
-        <Title>{title}</Title>
-        <Content>{content}</Content>
-      </StyledNotification>
-    </ CSSTransition>
-  )
-}
- 
 const Notifications = () => {
   const { notifications } = useSelector(s => s.control);
+  const dispatch = useDispatch();
 
   const calculatedHeight = useCallback(() => {
     if (notifications.length > 3) {
-      return `${3 * 80}px`
+      return `${(3 * 70) + 20}px`
     } else {
-      return `${notifications.length * 80}px`;
+      return `${(notifications.length * 80) - 10}px`;
     }
   }, [notifications])
 
   return notificationRoot && ReactDOM.createPortal(
     (
         <NotsWrap customHeight={calculatedHeight}>
-          <TransitionGroup>
             {
-              notifications.map((item) => <Notification key={item.id} item={item} />)
+              notifications.map((item) => (
+                <StyledNotification key={item.id} >
+                  <IconWrap>
+                    <CloseIcon onClick={() => dispatch(removeNotification(item.id))} width="24" height="24" />
+                  </IconWrap>
+                  <Title>{item.title}</Title>
+                  <Content>{item.content}</Content>
+                </StyledNotification>            
+              ))
             }
-          </TransitionGroup>
         </NotsWrap>
     ),
     notificationRoot

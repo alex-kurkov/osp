@@ -60,14 +60,6 @@ const App = () => {
           <Notifications />
           { apiRequestInProgress && <Loader /> }
           <Header />
-          <button onClick={() => dispatch(addNotification( 
-              {
-                id: uuidv4(),
-                title: `ОЧЕНЬ ВАЖНЫЙ ТИТУЛ${uuidv4}`,
-                content: 'ну а тут содержание',
-                lifetime: null,
-              },
-          ))} >erofierfpjrfpjerpkc!!!!!!!!!</button>
           <NavigationSideMenu />
           {!!goods.length &&
               <Switch location={location}>
