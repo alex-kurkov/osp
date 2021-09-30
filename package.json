@@ -22,6 +22,7 @@
     "styled-components.macro": "^1.0.0",
     "styled-normalize": "^8.0.7",
     "swiper": "^6.x.x",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

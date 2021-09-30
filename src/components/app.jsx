@@ -15,6 +15,9 @@ import {
   TipsPage,
   BarListPage
  } from '../pages'
+import { addNotification } from '../services/reducers/control/controlSlice';
+import { v4 as uuidv4 } from 'uuid';
+import { addSelfDestroyedNot } from '../services/actions/notifications';
 
 
 const StyledApp = styled.div`
@@ -59,6 +62,14 @@ const App = () => {
           <Notifications />
           { apiRequestInProgress && <Loader /> }
           <Header />
+          <button onClick={() => dispatch(addSelfDestroyedNot(dispatch, 
+              {
+                id: uuidv4(),
+                title: `ОЧЕНЬ ВАЖНЫЙ ТИТУЛ${uuidv4}`,
+                content: 'ну а тут содержание',
+                lifetime: null,
+              },
+          ))} >erofierfpjrfpjerpkc!!!!!!!!!</button>
           <NavigationSideMenu />
           {!!goods.length &&
               <Switch location={location}>
