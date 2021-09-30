@@ -138,7 +138,7 @@ const Card = ({ item }) => {
         <PriceBlock>
           <Price>{price} P.-</Price>
           <Availability added={available}>
-            {available ? 'доступно' : 'закончилось'}
+            {available ? 'доступно к заказу' : 'закончилось'}
           </Availability>
           <LikeIcon width="24px" height="24px" liked={added} onClick={handleAdd} />          
         </PriceBlock>
