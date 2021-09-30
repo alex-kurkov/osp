@@ -22,7 +22,7 @@ const FooterText = styled.p`
 `
 
 const Footer = () => {
-  const now = new Date;
+  const now = new Date();
   return (
     <StyledFooter>
       <FooterText>

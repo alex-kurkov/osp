@@ -107,14 +107,30 @@ const Card = ({ item }) => {
         {
           id: uuidv4(),
           title: 'МЫ СОЖАЛЕЕМ!',
-          content: `Блюдо ${name.toUpperCase()} закончилось. Но скоро оно появится)`,
+          content: `Блюдо ${name} закончилось. Но скоро оно появится)`,
           lifetime: 3000,
         },
       ))
     } else if (added) {
-      dispatch(removeIngredient(item))
+      dispatch(removeIngredient(item));
+      dispatch(addNotification(
+        {
+          id: uuidv4(),
+          title: `Блюдо ${name}`,
+          content: 'удалено из заказа',
+          lifetime: 3000,
+        },
+      ));
     } else {
-      dispatch(addIngredient(item))
+      dispatch(addIngredient(item));
+      dispatch(addNotification(
+        {
+          id: uuidv4(),
+          title: 'ОТЛИЧНЫЙ ВЫБОР!',
+          content: `Вы добавили блюдо ${name} к своему заказу`,
+          lifetime: 3000,
+        },
+      ));
     }
   }
 

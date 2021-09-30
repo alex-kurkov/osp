@@ -89,7 +89,7 @@ const NavigationSideMenu = () => {
     };
     window.addEventListener('keydown', closeByEscape);
     return () => window.removeEventListener('keydown', closeByEscape);
-  }, []);
+  }, [dispatch]);
 
   return navigationRoot && ReactDOM.createPortal((
     <StyledNavigation open={navOpen} onClick={handleOverlayClick}>

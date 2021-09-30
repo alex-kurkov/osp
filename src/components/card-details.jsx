@@ -82,7 +82,7 @@ const CardDetails = ({ item, handleAdd, added, closeModalCb }) => {
           {added ? 'Выбрано' : 'Пока не в корзине'}
         </ChosenInformer>
         <ChosenInformer added={available}>
-          {available ? 'доступно' : 'закончилось'}
+          {available ? 'доступно к заказу' : 'закончилось'}
         </ChosenInformer>
 
       <InfoBlock>

@@ -15,8 +15,6 @@ import {
   TipsPage,
   BarListPage
  } from '../pages'
-import { addNotification } from '../services/reducers/control/controlSlice';
-import { v4 as uuidv4 } from 'uuid';
 
 const StyledApp = styled.div`
   background-color: ${p => p.theme.colors.background};
@@ -43,14 +41,17 @@ const App = () => {
     if (savedChosen.length > 0) dispatch(setChosen(savedChosen));
     dispatch(getGoods());
     dispatch(getBeverages());
-  }, [])
+    // eslint-disable-next-line
+  }, [dispatch])
 
   useEffect(() => {
     setSavedChosen(chosen);
+    // eslint-disable-next-line
   }, [chosen])
 
   useEffect(() => {
     setSavedTheme(theme);
+    // eslint-disable-next-line
   }, [theme])
 
   return (

@@ -37,6 +37,7 @@ const MenuText = styled.span`
 
 const HomePage = () => {
   const history = useHistory();
+  // eslint-disable-next-line
   const [main, ...data] = navMenuItems; 
 
   return (
