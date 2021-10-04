@@ -4,11 +4,11 @@ import { useHistory } from 'react-router';
 import { navMenuItems } from '../utils/data'
 
 const Page = styled.div`
-  width: 100%100%;
+  width: 100%;
   height: calc(100vh - 120px);
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 4px;
+  grid-template-rows: min-content repeat(3, 1fr);
+  gap: 20px;
 `
 const MenuItem = styled.div`
   background-image: url(${p=>p.image});
@@ -19,11 +19,16 @@ const MenuItem = styled.div`
   align-items: flex-end;
   justify-content: center;
   cursor: pointer;
+  box-shadow: ${(p) => p.theme.colors.textPrimary} 0 0 8px 1px;
+  border-radius: 8px;
+  width: calc(100% - 24px);
+  margin: 0 auto;
 `
 const TextWrap = styled.div`
   height: 60px;
   width: 100%;
   text-align: center;
+  border-radius: 0 0 8px 8px;
   background: 
     linear-gradient(to bottom, ${p => p.theme.colors.transparent}, ${p => p.theme.colors.background} 50%);
 `
@@ -34,6 +39,16 @@ const MenuText = styled.span`
   margin: 0;
   color: ${p => p.theme.colors.textPrimary};
 `
+const Title = styled.h1`
+  font-weight: 600;
+  font-size: 36px;
+  padding: 12px 60px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  color: ${p => p.theme.colors.textPrimary};
+  text-align: center;
+`
 
 const HomePage = () => {
   const history = useHistory();
@@ -42,6 +57,7 @@ const HomePage = () => {
 
   return (
     <Page>
+      <Title>Электронное меню ресторана Остров Суши</Title>
       {data.map((item) => {
         return (
         <MenuItem key={item.slug} image={item.image} onClick={() => history.push(item.url)}>
