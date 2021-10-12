@@ -4,8 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './components/app';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import './index.css';
-import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper-bundle.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,3 +18,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();
