@@ -5,12 +5,6 @@ import { InstaIcon, MailIcon, PhoneIcon, VkIcon, YaIcon } from '../ui/icons'
 
 export const navMenuItems = [
   {
-    name: 'Главная',
-    slug: 'main',
-    url: '/main',
-    image: null
-  },
-  {
     name: 'Меню',
     slug: 'menu',
     url: '/menu',

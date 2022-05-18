@@ -64,11 +64,11 @@ const App = () => {
           <NavigationSideMenu />
           {!!goods.length &&
               <Switch location={location}>
-                <Route exact path="/" component={HomePage} />
+                {/* <Route exact path="/" component={MenuPage} /> */}
                 <Route exact path="/menu" component={MenuPage} />
                 <Route exact path="/bar" component={BarListPage} />
                 <Route exact path="/service" component={TipsPage} />
-                <Route path="*" render={() => <Redirect to="/" />} />
+                <Route path="*" render={() => <Redirect to="/menu" />} />
               </Switch>
           }
           <Footer />

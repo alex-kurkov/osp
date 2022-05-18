@@ -4,8 +4,9 @@ import { useHistory } from 'react-router';
 import { navMenuItems } from '../utils/data'
 
 const Page = styled.div`
-  width: 100%;
+  width: clamp(320px, 80%, 640px);
   height: calc(100vh - 120px);
+  margin: 0 auto;
   display: grid;
   grid-template-rows: min-content repeat(3, 1fr);
   gap: 20px;
