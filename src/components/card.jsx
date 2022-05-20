@@ -78,19 +78,19 @@ const Price = styled.span`
   font-weight: 600;
   color: ${p => p.theme.colors.textPrimary};
 `
-const Availability = styled.span`
+/* const Availability = styled.span`
   display: inline-block;
   color: ${p => p.added? p.theme.colors.added : p.theme.colors.unadded};
   font-size: 12px;
   text-align: left;
   line-height: 1.2;
-`
+` */
 
 const Card = ({ item }) => {
   const dispatch = useDispatch();
   const { chosen } = useSelector(store => store.cart);
   const {
-    name, price, image, slug, available
+    name, price, image, slug,
   } = item;
 
   const [added, setAdded] = useState(chosen.find(i => i.slug === slug));
@@ -153,9 +153,9 @@ const Card = ({ item }) => {
         <Title>{name}</Title>
         <PriceBlock>
           <Price>{price} P.-</Price>
-          <Availability added={available}>
+{/*           <Availability added={available}>
             {available ? 'доступно к заказу' : 'закончилось'}
-          </Availability>
+          </Availability> */}
           <LikeIcon width="24px" height="24px" liked={added} onClick={handleAdd} />          
         </PriceBlock>
       </Block>

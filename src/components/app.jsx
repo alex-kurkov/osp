@@ -10,7 +10,6 @@ import { setChosen } from '../services/reducers/cart/cartSlice';
 import { setTheme } from '../services/reducers/theme/themeSlice';
 import { Redirect, Route, Switch, useLocation } from 'react-router';
 import {
-  HomePage,
   MenuPage,
   TipsPage,
   BarListPage

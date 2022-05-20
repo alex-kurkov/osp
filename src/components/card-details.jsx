@@ -81,10 +81,10 @@ const CardDetails = ({ item, handleAdd, added, closeModalCb }) => {
         <ChosenInformer added={added}>
           {added ? 'Выбрано' : 'Пока не в корзине'}
         </ChosenInformer>
-        <ChosenInformer added={available}>
+{/*         <ChosenInformer added={available}>
           {available ? 'доступно к заказу' : 'закончилось'}
         </ChosenInformer>
-
+ */}
       <InfoBlock>
         <Image src={image && image.url ? `${API_URL}${image.url}` : thumbTemplate} loading="lazy"/>
         <Description>{description}</Description>
